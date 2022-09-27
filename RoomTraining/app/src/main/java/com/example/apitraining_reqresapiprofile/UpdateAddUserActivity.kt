@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.apitraining_reqresapiprofile.databinding.ActivityUpdateAddUserBinding
@@ -34,6 +35,7 @@ class UpdateAddUserActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.update(getDataFromInput(),firstValue!!.id!!)
                 }
+                Toast.makeText(this,"Informasi user berhasil diperbarui",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,OfflineListActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -48,6 +50,7 @@ class UpdateAddUserActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.insert(getDataFromInput())
                 }
+                Toast.makeText(this,"User berhasil ditambahkan", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,OfflineListActivity::class.java)
                 startActivity(intent)
                 finish()

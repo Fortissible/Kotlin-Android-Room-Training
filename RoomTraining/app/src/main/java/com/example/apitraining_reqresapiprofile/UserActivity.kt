@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -48,6 +49,11 @@ class UserActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.insert(userData)
                 }
+                Toast.makeText(this,"User berhasil tersimpan",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this,ListUsersActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
             }
         } else if (dataType == 0) {
             val dataUserOffline = intent.getParcelableExtra<UserEntity>(OfflineListActivity.RV_OFFLINE_ITEM_ID)
@@ -66,7 +72,9 @@ class UserActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.delete(dataUserOffline!!)
                 }
+                Toast.makeText(this,"User berhasil dihapus",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,OfflineListActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 finish()
             }
@@ -75,7 +83,9 @@ class UserActivity : AppCompatActivity() {
                 val intentToEditActivity = Intent(this,UpdateAddUserActivity::class.java)
                 intentToEditActivity.putExtra(ACTIVITY_TYPE,0)
                 intentToEditActivity.putExtra(UPDATE_FIRST_VALUE,dataUserOffline)
+                intentToEditActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intentToEditActivity)
+                finish()
             }
         }
     }
