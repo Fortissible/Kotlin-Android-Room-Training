@@ -23,9 +23,9 @@ class OfflineListActivity : AppCompatActivity() {
 
         activityOfflineListBinding.offlineListUsersRv.setHasFixedSize(true)
 
-        viewModel.getAllUserOffline().observe(this){
-            showRecyclerView(it)
-        }
+//        viewModel.getAllUserOffline().observe(this){
+//            showRecyclerView(it)
+//        }
 
         activityOfflineListBinding.offlineListUsersAddBtn.setOnClickListener {
             val intentToAddUserActivity = Intent(this,UpdateAddUserActivity::class.java)

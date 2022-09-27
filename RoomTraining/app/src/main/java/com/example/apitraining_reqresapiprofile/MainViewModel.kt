@@ -5,17 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel(application: Application): ViewModel(){
-    private val mUserRepository : UserRepository = UserRepository(application)
+    private val mUserRepository : UserRepository = UserRepository()
 
     suspend fun insert(user: UserEntity) {
-        mUserRepository.insert(user)
+        //mUserRepository.insert(user)
     }
     suspend fun update(user: UserEntity, id:Int) {
-        mUserRepository.update(user,id)
+        //mUserRepository.update(user,id)
     }
     suspend fun delete(user: UserEntity) {
-        mUserRepository.delete(user)
+        //mUserRepository.delete(user)
     }
 
-    fun getAllUserOffline() : LiveData<List<UserEntity>> = mUserRepository.getAllUserOffline()
+    //fun getAllUserOffline() : LiveData<List<UserEntity>> = mUserRepository.getAllUserOffline()
+
 }
