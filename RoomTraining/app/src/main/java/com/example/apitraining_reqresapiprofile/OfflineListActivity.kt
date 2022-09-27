@@ -30,7 +30,9 @@ class OfflineListActivity : AppCompatActivity() {
         activityOfflineListBinding.offlineListUsersAddBtn.setOnClickListener {
             val intentToAddUserActivity = Intent(this,UpdateAddUserActivity::class.java)
             intentToAddUserActivity.putExtra(UserActivity.ACTIVITY_TYPE,1)
+            intentToAddUserActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intentToAddUserActivity)
+            finish()
         }
     }
 
@@ -44,7 +46,9 @@ class OfflineListActivity : AppCompatActivity() {
                 val intentToDetail = Intent(this@OfflineListActivity,UserActivity::class.java)
                 intentToDetail.putExtra(RV_OFFLINE_ITEM_ID,userData)
                 intentToDetail.putExtra(ListUsersActivity.DETAIL_TYPE,0)
+                intentToDetail.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intentToDetail)
+                finish()
             }
             override fun onDeleteUser(userData: UserEntity) {
                 lifecycleScope.launch {
