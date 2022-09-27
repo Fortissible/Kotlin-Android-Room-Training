@@ -26,6 +26,12 @@ class OfflineListActivity : AppCompatActivity() {
         viewModel.getAllUserOffline().observe(this){
             showRecyclerView(it)
         }
+
+        activityOfflineListBinding.offlineListUsersAddBtn.setOnClickListener {
+            val intentToAddUserActivity = Intent(this,UpdateAddUserActivity::class.java)
+            intentToAddUserActivity.putExtra(UserActivity.ACTIVITY_TYPE,1)
+            startActivity(intentToAddUserActivity)
+        }
     }
 
     private fun showRecyclerView(data : List<UserEntity>){

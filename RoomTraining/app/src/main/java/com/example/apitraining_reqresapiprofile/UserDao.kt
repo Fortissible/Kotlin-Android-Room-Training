@@ -9,8 +9,8 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(user:UserEntity)
 
-    @Update
-    suspend fun update(user:UserEntity)
+    @Query("UPDATE userentity SET first_name = :firstName, last_name = :lastName, email = :email WHERE id = :id")
+    suspend fun update(firstName:String, lastName:String, email:String, id:Int)
 
     @Delete
     suspend fun delete(user:UserEntity)

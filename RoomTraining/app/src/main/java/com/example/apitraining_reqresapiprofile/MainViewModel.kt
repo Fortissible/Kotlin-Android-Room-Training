@@ -10,8 +10,8 @@ class MainViewModel(application: Application): ViewModel(){
     suspend fun insert(user: UserEntity) {
         mUserRepository.insert(user)
     }
-    suspend fun update(user: UserEntity) {
-        mUserRepository.update(user)
+    suspend fun update(user: UserEntity, id:Int) {
+        mUserRepository.update(user,id)
     }
     suspend fun delete(user: UserEntity) {
         mUserRepository.delete(user)

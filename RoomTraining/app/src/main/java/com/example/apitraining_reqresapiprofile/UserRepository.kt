@@ -17,5 +17,10 @@ class UserRepository(application: Application) {
 
     suspend fun delete(user: UserEntity) = mUserDao.delete(user)
 
-    suspend fun update(user: UserEntity) = mUserDao.update(user)
+    suspend fun update(user: UserEntity,id: Int) {
+        val firstname = user.firstName.toString()
+        val lastname = user.lastName.toString()
+        val email = user.email.toString()
+        mUserDao.update(firstname,lastname,email,id)
+    }
 }

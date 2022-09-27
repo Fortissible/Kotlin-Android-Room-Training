@@ -12,19 +12,19 @@ import kotlinx.parcelize.Parcelize
 data class UserEntity(
     @ColumnInfo(name="last_name")
     @field:SerializedName("last_name")
-    val lastName: String,
+    val lastName: String? = null,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="id")
     @field:SerializedName("id")
-    val id: Int,
+    val id: Int? = null,
 
     @ColumnInfo(name="first_name")
     @field:SerializedName("first_name")
-    val firstName: String,
+    val firstName: String? = null,
 
     @ColumnInfo(name="email")
     @field:SerializedName("email")
-    val email: String
+    val email: String? = null
 
 ): Parcelable

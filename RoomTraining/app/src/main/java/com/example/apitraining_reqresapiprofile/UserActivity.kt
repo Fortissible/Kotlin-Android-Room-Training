@@ -63,19 +63,25 @@ class UserActivity : AppCompatActivity() {
             activityUserBinding.userDetailUpdateUserBtn.visibility = View.VISIBLE
 
             activityUserBinding.userDetailDeleteUserBtn.setOnClickListener {
-                val userData = UserEntity(
-                    lastName = dataUserOffline!!.lastName,
-                    firstName = dataUserOffline.firstName,
-                    email = dataUserOffline.email,
-                    id = dataUserOffline.id
-                )
                 lifecycleScope.launch {
-                    viewModel.delete(userData)
+                    viewModel.delete(dataUserOffline!!)
                 }
                 val intent = Intent(this,OfflineListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
+
+            activityUserBinding.userDetailUpdateUserBtn.setOnClickListener {
+                val intentToEditActivity = Intent(this,UpdateAddUserActivity::class.java)
+                intentToEditActivity.putExtra(ACTIVITY_TYPE,0)
+                intentToEditActivity.putExtra(UPDATE_FIRST_VALUE,dataUserOffline)
+                startActivity(intentToEditActivity)
+            }
         }
+    }
+
+    companion object{
+        const val ACTIVITY_TYPE = "ACTIVITY_TYPE"
+        const val UPDATE_FIRST_VALUE = "UPDATE_FIRST_VALUE"
     }
 }
